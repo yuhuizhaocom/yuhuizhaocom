@@ -14,7 +14,7 @@
 <div id="contentDiv">
     使用 /index.html?p=xxx.md 来访问资源<br/>
     <ol>
-        <li><a href="?p=index.md">index.md</a></li>
+        <li><a href="/index.html?p=index.md">index.md</a></li>
     </ol>
 </div>
 
@@ -23,10 +23,15 @@
 <script src="js/main.js"></script>
 
 <script>
-    var converter = new showdown.Converter();
-    var p = getUrlParams("p");
-    $.get(p, function (data) {
-        $("#contentDiv").html(converter.makeHtml(data));
+    $(function () {
+        var converter = new showdown.Converter();
+        var p = getUrlParams("p");
+        if (!p) {
+            return;
+        }
+        $.get(p, function (data) {
+            $("#contentDiv").html(converter.makeHtml(data)+'<br/><a href="/index.html">index.html</a>');
+        });
     });
 </script>
 </body>
