@@ -12,3 +12,5 @@ function getUrlParams(key) {
   }
   return false;
 }
+
+var dataArr = ['/md/index.md', '/md/jenkins.md', '/md/skill.md', '/md/README.md'];
