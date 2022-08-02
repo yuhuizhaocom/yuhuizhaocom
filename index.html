@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>MarkdownBlog</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/index.css"/>
 </head>
 
 <body>
@@ -21,19 +20,22 @@
 
 <script>
     $(function () {
+        // 获取页面参数
         var p = getUrlParams("p");
 
-        if (!p) {
-            $.each(dataArr, function (index, elem) {
-                $("#listOl").append('<li><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
+        if (p) {
+            // 页面参数不为空
+            $.get(p, function (data) {
+                document.title = p;
+                var converter = new showdown.Converter();
+                $("#contentDiv").html(converter.makeHtml(data) + '<br/><a href="/index.html">回首页</a>');
             });
             return;
         }
 
-        $.get(p, function (data) {
-            document.title = p;
-            var converter = new showdown.Converter();
-            $("#contentDiv").html(converter.makeHtml(data)+'<br/><a href="/index.html">回首页</a>');
+        var listOl = $("#listOl");
+        $.each(dataArr, function (index, elem) {
+            listOl.append('<li><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
         });
     });
 </script>
