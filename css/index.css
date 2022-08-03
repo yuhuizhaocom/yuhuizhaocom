@@ -3,3 +3,8 @@
     margin: 5%;
     padding: 5%;
 }
+
+.list_li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
