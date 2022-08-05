@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>余晖照的博客</title>
-    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
 </head>
 
 <body>
@@ -14,12 +14,14 @@
     </ol>
 </div>
 
-<script src="/js/jquery-3.6.0.min.js"></script>
-<script src="/js/showdown.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/plugin/jquery/3.6.0/jquery.min.js"></script>
+<script src="/js/plugin/showdown/2.1.0/showdown.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/data.js"></script>
 
 <script>
     $(function () {
+
         // 获取页面参数
         var p = getUrlParams("p");
 
@@ -30,15 +32,21 @@
                 var converter = new showdown.Converter();
                 $("#contentDiv").html(converter.makeHtml(data) + '<br/><a href="/index.html">回首页</a>');
             });
-            return;
+        } else {
+            // 页面参数为空
+            var listOl = $("#listOl");
+            $.each(mdArr, function (index, elem) {
+                listOl.append('<li class="list_li"><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
+            });
+
+            $.each(pageArr, function (index, elem) {
+                listOl.append('<li class="list_li"><a href="' + elem + '" target="_blank">' + elem + '</a></li>')
+            });
         }
 
-        var listOl = $("#listOl");
-        $.each(dataArr, function (index, elem) {
-            listOl.append('<li class="list_li"><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
-        });
     });
 </script>
+
 </body>
 
 </html>
