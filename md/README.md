@@ -2,8 +2,6 @@
 
 ## 一个博客，使用markdown书写。
 
-### 有几个方向：职业发展、投资理财。
+- [职业发展](/index.html?p=/md/profession.md)
 
-- 职业发展
-
-- 投资理财
+- [投资理财](/index.html?p=/md/money.md)

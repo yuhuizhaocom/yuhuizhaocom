@@ -9,10 +9,18 @@
 
 <body>
 
-<div id="contentDiv">
-    <ol id="listOl">
-    </ol>
+<div id="leftCatalog">
+    <ol id="leftListOl"></ol>
 </div>
+
+<div id="centerDiv">
+
+</div>
+
+<div id="rightCatalog">
+
+</div>
+
 
 <script src="/js/plugin/jquery/3.6.0/jquery.min.js"></script>
 <script src="/js/plugin/showdown/2.1.0/showdown.min.js"></script>
@@ -22,25 +30,19 @@
 <script>
     $(function () {
 
+        var $leftListOl = $("#leftListOl");
+        $.each(mdArr, function (index, elem) {
+            $leftListOl.append('<li class="list_li"><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
+        });
+
         // 获取页面参数
         var p = getUrlParams("p");
-
         if (p) {
             // 页面参数不为空
             $.get(p, function (data) {
                 document.title = p;
                 var converter = new showdown.Converter();
-                $("#contentDiv").html(converter.makeHtml(data) + '<br/><a href="/index.html">回首页</a>');
-            });
-        } else {
-            // 页面参数为空
-            var listOl = $("#listOl");
-            $.each(mdArr, function (index, elem) {
-                listOl.append('<li class="list_li"><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
-            });
-
-            $.each(pageArr, function (index, elem) {
-                listOl.append('<li class="list_li"><a href="' + elem + '" target="_blank">' + elem + '</a></li>')
+                $("#centerDiv").html(converter.makeHtml(data));
             });
         }
 
