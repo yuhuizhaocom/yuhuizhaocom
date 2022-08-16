@@ -8,18 +8,24 @@
 </head>
 
 <body>
+<div id="yhz_container">
+    <div id="left_catalog" class="border_debug">
+        目录
+        <ol id="left_list_ol"></ol>
+    </div>
 
-<div id="leftCatalog">
-    <ol id="leftListOl"></ol>
+    <div id="center_content" class="border_debug">
+        正文
+        <div id="content_container">
+
+        </div>
+    </div>
+
+    <div id="right_catalog" class="border_debug">
+        敬请期待...
+    </div>
 </div>
 
-<div id="centerDiv">
-
-</div>
-
-<div id="rightCatalog">
-
-</div>
 
 
 <script src="/js/plugin/jquery/3.6.0/jquery.min.js"></script>
@@ -30,9 +36,9 @@
 <script>
     $(function () {
 
-        var $leftListOl = $("#leftListOl");
+        var $left_list_ol = $("#left_list_ol");
         $.each(mdArr, function (index, elem) {
-            $leftListOl.append('<li class="list_li"><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
+            $left_list_ol.append('<li class="list_li"><a href="/index.html?p=' + elem + '">' + elem + '</a></li>')
         });
 
         // 获取页面参数
@@ -42,7 +48,7 @@
             $.get(p, function (data) {
                 document.title = p;
                 var converter = new showdown.Converter();
-                $("#centerDiv").html(converter.makeHtml(data));
+                $("#content_container").html(converter.makeHtml(data));
             });
         }
 
