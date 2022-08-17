@@ -4,12 +4,12 @@
 
 
 #left_catalog {
-    width: 17%;
+    width: 27%;
     display: inline-grid;
     height: 600px;
 }
 
-#left_list_ol{
+#left_list{
     width: 100%;
     height: 550px;
 }
@@ -20,12 +20,17 @@
     height: 600px;
 }
 
+#content_container{
+    width: 100%;
+    height: 550px;
+}
+
 #right_catalog {
     width: 10%;
-    display: inline-grid;
+    display: none;
     height: 600px;
 }
 
 .border_debug {
-    border: black 1px solid;
+    /*border: black 1px solid;*/
 }
